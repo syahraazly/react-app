@@ -1,17 +1,35 @@
-import Button from "../components/elements/button";
 import CardProduct from "../components/fragment/CardProduct";
+
+const products = [
+  {
+    id: 1,
+    name: "Sepatu Lama",
+    price: "Rp 1.000.000",
+    image: "/images/shoes.jpg",
+    desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quo
+          tenetur saepe vitae rem atque fugit vero, doloremque iusto aliquid.`,
+  },
+  {
+    id: 2,
+    name: "Sepatu baru",
+    price: "Rp 1.000.000",
+    image: "/images/shoes.jpg",
+    desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+  },
+];
 
 const ProductPage = () => {
   return (
     <div className="flex justify-center py-5">
-      <CardProduct>
-        <CardProduct.Header image="/images/shoes.jpg" />
-        <CardProduct.Body title="Sepatu Baru">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quo
-          tenetur saepe vitae rem atque fugit vero, doloremque iusto aliquid.
-        </CardProduct.Body>
-        <CardProduct.Footer price="Rp. 1000.000" />
-      </CardProduct>
+      {products.map((product) => (
+        <CardProduct>
+          <CardProduct.Header image={product.image} />
+          <CardProduct.Body name={product.name}>
+            {product.desc}
+          </CardProduct.Body>
+          <CardProduct.Footer price={product.price} />
+        </CardProduct>
+      ))}
     </div>
   );
 };
